@@ -113,8 +113,8 @@ def findEnd(road, moves):
 
 # MAIN ALGORITHM
 
-n = int(float(input()))     # numbers of test case
-a = 0
+n = int(float(input())) + 1    # numbers of test case
+a = 1
 while a < n :
 
     nums = queue.Queue()
@@ -134,5 +134,5 @@ while a < n :
                 nums.put(put)
 
     img = image_save.image(road, N, M)
-    cv2.imwrite("./heven_coding_test/{}.png".format(n), img)
+    cv2.imwrite("./heven_coding_test/{}.png".format(a), img)
     a += 1
