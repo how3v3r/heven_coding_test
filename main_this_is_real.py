@@ -2,7 +2,9 @@
 
 import queue
 from sys import stdin
+import cv2
 
+import image_save
 
 # 길 찾기 검증용 함수
 
@@ -111,7 +113,7 @@ def findEnd(road, moves):
 
 # MAIN ALGORITHM
 
-n = int(input())     # numbers of test case, n <= 10
+n = int(float(input()))     # numbers of test case
 a = 0
 while a < n :
 
@@ -131,4 +133,6 @@ while a < n :
             if valid(road, put):
                 nums.put(put)
 
+    img = image_save.image(road, N, M)
+    cv2.imwrite("./heven_coding_test/{}.png".format(n), img)
     a += 1
