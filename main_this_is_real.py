@@ -1,6 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import queue
 from sys import stdin
 
+
+# 길 찾기 검증용 함수
 
 # def printroad(road, path=""):
 #     for y, ro in enumerate(road):
@@ -39,7 +43,7 @@ from sys import stdin
 #         print()
 
 
-
+# 경로 찾기
 def valid(road, moves):
     for y, ro in enumerate(road):
         for x, pos in enumerate(ro):
@@ -72,6 +76,7 @@ def valid(road, moves):
     return True
 
 
+# 경로 마지막 지점 파악
 def findEnd(road, moves):
     for y, ro in enumerate(road):
         for x, pos in enumerate(ro):
@@ -106,18 +111,24 @@ def findEnd(road, moves):
 
 # MAIN ALGORITHM
 
-nums = queue.Queue()
-nums.put('')
-add = ''
+n = int(input())     # numbers of test case, n <= 10
+a = 0
+while a < n :
 
-input = stdin.readline
-N, M = map(int, input().split())
-road = [list(map(int, list(input().strip()))) for _ in range(N)]
+    nums = queue.Queue()
+    nums.put('')
+    add = ''
 
-while not findEnd(road, add): 
-    add = nums.get()
-    # print(add)
-    for j in ['L', 'R', 'U', 'D']:
-        put = add + j
-        if valid(road, put):
-            nums.put(put)
+    input = stdin.readline
+    N, M = map(int, input().split())
+    road = [list(map(int, list(input().split(' ')))) for _ in range(N)]
+
+    while not findEnd(road, add): 
+        add = nums.get()
+        # print(add)
+        for j in ['L', 'R', 'U', 'D']:
+            put = add + j
+            if valid(road, put):
+                nums.put(put)
+
+    a += 1
